@@ -1,0 +1,17 @@
+$fixed-grid: false !default;
+
+$container-max-width: 1160px !default;
+$container-margin: 0 auto !default;
+$container-padding: 20px !default;
+$container-padding-xs: 10px !default;
+
+$grid-class: 'col' !default;
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+$grid-gutter-xs: 10px !default;
+
+$xs: 570px !default;
+$sm: 768px !default;
+$md: 992px !default;
+
+$screen-sizes: ('standard' 0, 'md' $md, 'sm' $sm, 'xs' $xs) !default;

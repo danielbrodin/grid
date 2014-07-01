@@ -1,0 +1,93 @@
+// Container
+@mixin fixed-container() {
+	@for $i from 1 through length($screen-sizes) {
+		$screen-size: nth($screen-sizes, $i);
+		$type: nth($screen-size, 1);
+		$width: nth($screen-size, 2);
+
+		@if $width == 0 {
+			width: $container-max-width;
+		}
+		@else {
+			$prev-screen-size: nth($screen-sizes, $i - 1);
+			$media-width: nth($prev-screen-size, 2);
+
+			@if $media-width == 0 { $media-width: $container-max-width }
+
+			@media (max-width: #{$media-width}) {
+				width:$width;
+			}
+		}
+	}
+}
+
+
+// Grid
+@mixin create-grid() {
+	@each $screen-size in $screen-sizes {
+		@include grid($screen-size);
+	}
+}
+
+@mixin grid($screen) {
+	$type: nth($screen, 1);
+	$max-width: nth($screen, 2);
+	@if $max-width > 0 {
+		@media (max-width: #{$max-width}) {
+			@for $i from 1 through $grid-columns {
+				.#{$grid-class}-#{$type}-#{$i} { @include grid-base($i); }
+				.#{$grid-class}-#{$type}-push-#{$i} { @include grid-push($i); }
+				.#{$grid-class}-#{$type}-pull-#{$i} { @include grid-pull($i); }
+			}
+			.#{$grid-class}-#{$type}-full { padding: 0; }
+		}
+	}
+	@else {
+		@for $i from 1 through $grid-columns {
+			.#{$grid-class}-#{$i} { @include grid-base($i); }
+			.#{$grid-class}-push-#{$i} { @include grid-push($i); }
+			.#{$grid-class}-pull-#{$i} { @include grid-pull($i); }
+		}
+		.#{$grid-class}-full { padding: 0; }
+	}
+}
+
+@mixin grid-base($i) {
+	width: percentage($i / $grid-columns);
+}
+
+@mixin grid-push($i) {
+	margin-left: percentage($i / $grid-columns);
+}
+
+@mixin grid-pull($i) {
+	margin-left: - percentage($i / $grid-columns);
+}
+
+
+// General
+@mixin mediaquery($point) {
+	@if $point == xs {
+		@media (max-width: $xs) { @content; }
+	}
+	@else if $point == sm {
+		@media (max-width: $sm) { @content; }
+	}
+	@else if $point == md {
+		@media (max-width: $md) { @content; }
+	}
+	@else {
+		@media (max-width: $point) { @content; }
+	}
+}
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
