@@ -10,8 +10,9 @@ $grid-columns: 12 !default;
 $grid-gutter: 20px !default;
 $grid-gutter-xs: 10px !default;
 
-$xs: 570px !default;
-$sm: 768px !default;
-$md: 992px !default;
+$grid-bp-xs: 570px !default;
+$grid-bp-sm: 768px !default;
+$grid-bp-md: 992px !default;
 
-$screen-sizes: ('standard' 0, 'md' $md, 'sm' $sm, 'xs' $xs) !default;
+$screen-sizes: ('standard' 0, 'md' $grid-bp-md, 'sm' $grid-bp-sm, 'xs' $grid-bp-xs) !default;
+
