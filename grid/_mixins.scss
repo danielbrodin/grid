@@ -68,13 +68,13 @@
 // General
 @mixin mediaquery($point) {
 	@if $point == xs {
-		@media (max-width: $xs) { @content; }
+		@media (max-width: $grid-bp-xs) { @content; }
 	}
 	@else if $point == sm {
-		@media (max-width: $sm) { @content; }
+		@media (max-width: $grid-bp-sm) { @content; }
 	}
 	@else if $point == md {
-		@media (max-width: $md) { @content; }
+		@media (max-width: $grid-bp-md) { @content; }
 	}
 	@else {
 		@media (max-width: $point) { @content; }
