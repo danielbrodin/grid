@@ -70,20 +70,19 @@
 	@return nth($prev-screen-size, 2);
 }
 
+@function smallest-bp() {
+	$screen: nth($screen-sizes, length($screen-sizes));
+	@return nth($screen, 1);
+}
+
 
 @mixin mediaquery($point) {
-	@if $point == xs {
-		@media (max-width: $grid-bp-xs) { @content; }
+	$size: map-get($screen-sizes, $point);
+	@if $size == null {
+		$size: $point;
 	}
-	@else if $point == sm {
-		@media (max-width: $grid-bp-sm) { @content; }
-	}
-	@else if $point == md {
-		@media (max-width: $grid-bp-md) { @content; }
-	}
-	@else {
-		@media (max-width: $point) { @content; }
-	}
+
+	@media (max-width: $size) { @content }
 }
 
 @mixin clearfix() {
