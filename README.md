@@ -1,7 +1,7 @@
 # Grid
 
 ## A Desktop First Grid System
-Simply because not everyone is using a modern browser, and you do not want these users to have to use the mobile version.
+Simply because most of the time you (well I) get a design made for desktop and you have to figure out along the way how to make it look sweet on smaller devices.
 
 
 ## Ok, so now?
