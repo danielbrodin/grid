@@ -5,16 +5,10 @@
 	margin: $container-margin;
 	padding: 0 $container-padding;
 
-	@if $fixed-grid {
-		@include fixed-container();
-	}
-	@else {
-		max-width: $container-max-width;
+	@include container-size();
 
-		@include mediaquery(xs) {
-			padding: 0 $container-padding-xs;
-		}
-
+	@include mediaquery(xs) {
+		padding: 0 $container-padding-xs;
 	}
 
 	&.container-fluid {

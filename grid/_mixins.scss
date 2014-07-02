@@ -1,39 +1,43 @@
-// Container
-@mixin fixed-container() {
-	@for $i from 1 through length($screen-sizes) {
-		$screen-size: nth($screen-sizes, $i);
-		$type: nth($screen-size, 1);
-		$width: nth($screen-size, 2);
+@mixin container-size() {
+	@if $fixed-grid {
+		width: $container-max-width; // Default value
 
-		@if $width == 0 {
-			width: $container-max-width;
-		}
-		@else {
-			$prev-screen-size: nth($screen-sizes, $i - 1);
-			$media-width: nth($prev-screen-size, 2);
-
-			@if $media-width == 0 { $media-width: $container-max-width }
+		@for $i from 1 through length($screen-sizes) {
+			$screen-size: nth($screen-sizes, $i);
+			$width: nth($screen-size, 2);
+			$media-width: get-prev-size($i);
 
 			@media (max-width: #{$media-width}) {
-				width:$width;
+				width: $width;
 			}
 		}
 	}
-}
-
-
-// Grid
-@mixin create-grid() {
-	@each $screen-size in $screen-sizes {
-		@include grid($screen-size);
+	@else {
+		max-width: $container-max-width;
 	}
 }
 
-@mixin grid($screen) {
-	$type: nth($screen, 1);
-	$max-width: nth($screen, 2);
-	@if $max-width > 0 {
-		@media (max-width: #{$max-width}) {
+
+@mixin create-grid() {
+	// Default grid
+	@for $i from 1 through $grid-columns {
+		.#{$grid-class}-#{$i} { @include grid-base($i); }
+		.#{$grid-class}-push-#{$i} { @include grid-push($i); }
+		.#{$grid-class}-pull-#{$i} { @include grid-pull($i); }
+	}
+	.#{$grid-class}-full { padding: 0; }
+
+	// Breakpoints
+	@for $i from 1 through length($screen-sizes) {
+		$screen: nth($screen-sizes, $i);
+		$type: nth($screen, 1);
+		$media-width: nth($screen, 2);
+
+		@if $fixed-grid {
+			$media-width: get-prev-size($i);
+		}
+
+		@media (max-width: #{$media-width}) {
 			@for $i from 1 through $grid-columns {
 				.#{$grid-class}-#{$type}-#{$i} { @include grid-base($i); }
 				.#{$grid-class}-#{$type}-push-#{$i} { @include grid-push($i); }
@@ -41,14 +45,6 @@
 			}
 			.#{$grid-class}-#{$type}-full { padding: 0; }
 		}
-	}
-	@else {
-		@for $i from 1 through $grid-columns {
-			.#{$grid-class}-#{$i} { @include grid-base($i); }
-			.#{$grid-class}-push-#{$i} { @include grid-push($i); }
-			.#{$grid-class}-pull-#{$i} { @include grid-pull($i); }
-		}
-		.#{$grid-class}-full { padding: 0; }
 	}
 }
 
@@ -65,7 +61,16 @@
 }
 
 
-// General
+
+@function get-prev-size($i) {
+	@if $i == 1 {
+		@return $container-max-width;
+	}
+	$prev-screen-size: nth($screen-sizes, $i - 1);
+	@return nth($prev-screen-size, 2);
+}
+
+
 @mixin mediaquery($point) {
 	@if $point == xs {
 		@media (max-width: $grid-bp-xs) { @content; }

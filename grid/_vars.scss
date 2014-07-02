@@ -14,4 +14,4 @@ $grid-bp-xs: 570px !default;
 $grid-bp-sm: 768px !default;
 $grid-bp-md: 992px !default;
 
-$screen-sizes: ('standard' 0, 'md' $grid-bp-md, 'sm' $grid-bp-sm, 'xs' $grid-bp-xs);
+$screen-sizes: ('md' $grid-bp-md, 'sm' $grid-bp-sm, 'xs' $grid-bp-xs);
