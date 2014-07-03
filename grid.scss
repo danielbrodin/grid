@@ -1,27 +1,69 @@
-$fixed-grid-fluid-xs: false;
+$grid-gutter-xs: 20px;
 @import "grid/grid";
 
-$bg-color: #1E3659;
+$bg-image: url(http://38.media.tumblr.com/4e52d4fbbcefbeb09b641462e7752fb3/tumblr_mzwww6jdhC1sfie3io1_1280.jpg);
+$bg-color: #fcfcfc;
 $pretty-colors: (#45B29D, #EFC94C, #E27A3F, #DF4949);
 
 body {
-	background: $bg-color;
+	background-color: $bg-color;
+	margin: 0;
 }
 
 .header {
-
-	h1 {
-		font-size: 180px;
-		font-family: "Tienne", georgia, serif;
-		text-transform: uppercase;
-		color: #f7f7f7;
-	}
+	background-image: $bg-image;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	margin-bottom: $grid-gutter;
+	padding: 80px 0;
 }
 
+h1 {
+	font-size: 180px;
+	font-family: "PT Sans", georgia, serif;
+	text-transform: uppercase;
+	color: #f7f7f7;
+	margin: 80px 0 40px;
+	text-shadow: 0 2px 0px #333;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	span {
+		display: block;
+
+		span {
+			background-image: $bg-image;
+		}
+
+		&:nth-child(1) span { background-position: top left; }
+		&:nth-child(2) span { background-position: top right; }
+		&:nth-child(3) span { background-position: bottom right; }
+		&:nth-child(4) span { background-position: bottom left; }
+	}
+
+}
+
+h2 {
+	font-size: 42px;
+	font-family: "PT Sans", georgia, serif;
+	color: #333;
+	margin: 10px 0 20px;
+}
+
+p {
+	font-family: "Antic Slab", georgia, serif;
+	font-size: 18px;
+	color: #333;
+	text-align: justify;
+	line-height: 1.6em;
+}
+.pretty-box {
+	margin-bottom: $grid-gutter;
+}
 .pretty-boxes {
 	.pretty-box {
-		margin-bottom: $grid-gutter;
-
 		$i: 1;
 		@each $color in $pretty-colors {
 			&:nth-child(#{$i}) {
