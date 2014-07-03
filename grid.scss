@@ -1,1 +1,38 @@
 @import "grid/grid";
+
+$bg-color: #1E3659;
+$pretty-colors: (#45B29D, #EFC94C, #E27A3F, #DF4949);
+
+body {
+	background: $bg-color;
+}
+
+.header {
+
+	h1 {
+		font-size: 180px;
+		font-family: "Tienne", georgia, serif;
+		text-transform: uppercase;
+		color: #f7f7f7;
+	}
+}
+
+.pretty-boxes {
+	.pretty-box {
+		margin-bottom: $grid-gutter;
+
+		$i: 1;
+		@each $color in $pretty-colors {
+			&:nth-child(#{$i}) {
+				> div {
+					background: $color;
+				}
+			}
+			$i: $i + 1;
+		}
+		> div {
+			height: 300px;
+		}
+	}
+
+}
