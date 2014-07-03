@@ -48,6 +48,8 @@
 				.#{$grid-class}-#{$type}-push-#{$i} { @include grid-push($i); }
 				.#{$grid-class}-#{$type}-pull-#{$i} { @include grid-pull($i); }
 			}
+			.#{$grid-class}-#{$type}-push-0 { @include grid-push(0); }
+			.#{$grid-class}-#{$type}-pull-0 { @include grid-pull(0); }
 			.#{$grid-class}-#{$type}-full { padding: 0; }
 		}
 	}
