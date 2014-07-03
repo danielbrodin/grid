@@ -11,7 +11,7 @@ Simply because most of the time you (well I) get a design made for desktop and y
 
 ## How to use
 ### Implement
-Take the grid folder, add it to your project and `@import "grid/grid"`. Or you can take one of the `.css` files in the css folder.
+Take the grid folder, add it to your project and `@import "grid/grid"`.
 
 ### Settings
 All settings/vars can be overwritten in your own sass file, just add the vars before you include the grid and those will be used instead of the default ones. Never change the values in the grid files incase you want to update.
