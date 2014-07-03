@@ -6,8 +6,7 @@
     .container {
       padding: 0 10px; } }
   .container.container-fluid {
-    width: 100%;
-    margin: 0 auto; }
+    width: 100%; }
 
 .row {
   position: relative; }
