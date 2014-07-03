@@ -33,9 +33,9 @@
   padding-right: 10px;
   float: left;
   min-height: 1px; }
-  [class*='col-'] > [class*='col-']:first-child {
+  [class*='col-'] > [class*='col-']:first-child, [class*='col-'] > [class*='col-'].col-12 {
     padding-left: 0; }
-  [class*='col-'] > [class*='col-']:last-child {
+  [class*='col-'] > [class*='col-']:last-child, [class*='col-'] > [class*='col-'].col-12 {
     padding-right: 0; }
   [class*='col-'].col-centered {
     float: none;
