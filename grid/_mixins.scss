@@ -7,7 +7,7 @@
 			$width: nth($screen-size, 2);
 			$media-width: get-prev-size($i);
 
-			@media (max-width: #{$media-width}) {
+			@media (max-width: #{$media-width} - 1) {
 				@if $i == length($screen-sizes) and $fixed-grid-fluid-xs {
 					max-width: $width;
 				}
