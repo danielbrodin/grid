@@ -88,6 +88,12 @@
 	@if $size == null {
 		$size: $point;
 	}
+	// $size: $point;
+	// @each $screen in $screen-sizes {
+	// 	@if nth($screen, 1) == $point {
+	// 		$size: nth($screen, 2);
+	// 	}
+	// }
 
 	@media (max-width: $size) { @content }
 }
